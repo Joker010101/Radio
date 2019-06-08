@@ -94,7 +94,7 @@ namespace Radio
             newForm.Play.Visible = false;
             newForm.Show();
 
-
+// проверяю git коменты для проверки 
         }
 
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)

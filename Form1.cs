@@ -93,8 +93,11 @@ namespace Radio
             Form2 newForm = new Form2();
             newForm.Play.Visible = false;
             newForm.Show();
+            // коменты были сделаны 
+            // коменты были сделаны 
+            // коменты были сделаны 
 
-// проверяю git коменты для проверки 
+
         }
 
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)

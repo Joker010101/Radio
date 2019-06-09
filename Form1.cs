@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace Radio
 {
+
+    // Еще были добавлены коменты для проверки 
+
     public partial class Form1 : Form
     {
         string radioStation;

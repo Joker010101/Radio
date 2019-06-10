@@ -171,11 +171,9 @@ namespace Radio
         private void Timer1_Tick(object sender, EventArgs e)
         {
 
-        label1.Text =Per.sec;
-        label2.Text = Per.min;
-        label3.Text = Per.hac;        
-               
-           
+           label1.Text = Per.sec;
+           label2.Text = Per.min;
+           label3.Text = Per.hac;        
 
         }
 

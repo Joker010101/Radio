@@ -163,6 +163,7 @@ namespace Radio
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            timer2.Stop();
             button1.Enabled = true;
             timer1.Stop();
         }      

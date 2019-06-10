@@ -81,14 +81,19 @@ namespace Radio
                 m = 59;
             }
 
-         if (h == 0 && m == 0 && s == 30)
+        // if (h == 0 && m == 0 && s == 0)
            
-             //  MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
+            //MessageBox.Show(" Время вышло !!! ");
 
             if (h == 0 && m == 0 && s == 0)
             {
+                
                 button1.Enabled = true;
                 timer1.Stop();
+                    label4.Text = " 0 ";
+                    label5.Text = " 0 ";
+                    label6.Text = " 0 ";
+                MessageBox.Show(" Время вышло !!! ");
             }
 
             

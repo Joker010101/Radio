@@ -118,7 +118,20 @@ namespace Radio
             }
 
             
-        }      
+        }
+
+        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+            if (checkBox.Checked == true)
+            {
+                MessageBox.Show("Флажок " + checkBox.Text + "  теперь отмечен");
+            }
+            else
+            {
+                MessageBox.Show("Флажок " + checkBox.Text + "  теперь не отмечен");
+            }
+        }
 
         private void Button3_Click(object sender, EventArgs e)
         {

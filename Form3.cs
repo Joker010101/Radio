@@ -23,9 +23,9 @@ namespace Radio
 
         private void Form3_Load(object sender, EventArgs e)
         {
-           
-            
 
+
+         
 
             StartPosition = FormStartPosition.Manual;
             Location =     new Point(1130, 350);
@@ -48,7 +48,7 @@ namespace Radio
             
 
             Close();
-            
+           
 
             string[] createtext = { textBox1.Text,textBox2.Text,textBox3.Text };
             File.WriteAllLines(@"timer1", createtext, System.Text.Encoding.Default);
@@ -80,16 +80,11 @@ namespace Radio
             label4.Text = Convert.ToString(h);
             label5.Text = Convert.ToString(m);
             label6.Text = Convert.ToString(s);
-           
-
-            
 
                 s = s - 1;
             if (s == -1 )
 
             {
-
-
                 m = m - 1;
                 s = 59;
             
@@ -105,12 +100,8 @@ namespace Radio
            
          MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
 
-             
-
             if (h == 0 && m == 0 && s == 0)
             {
-                
-
                 timer1.Stop();
                 MessageBox.Show("Время вышло!");
                
@@ -122,16 +113,49 @@ namespace Radio
 
         private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
+            h = Convert.ToInt32(textBox1.Text);
+            m = Convert.ToInt32(textBox2.Text);
+            s = Convert.ToInt32(textBox3.Text);
+
+
             CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
             if (checkBox.Checked == true)
+
             {
-                MessageBox.Show("Флажок " + checkBox.Text + "  теперь отмечен");
-            }
-            else
-            {
-                MessageBox.Show("Флажок " + checkBox.Text + "  теперь не отмечен");
-            }
-        }
+                button1.Enabled = false;
+                timer1.Enabled = true;
+                s = s - 1;
+                if (s == -1)
+
+                {
+                    m = m - 1;
+                    s = 59;
+                }
+
+                if (m == -1)
+                {
+                    h = h - 1;
+                    m = 59;
+                }
+
+                    if (h == 0 && m == 0 && s == 30)
+
+                    MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s) + " секунд ");
+
+                if (h == 0 && m == 0 && s == 0)
+                {
+                    MessageBox.Show(Convert.ToString(s));
+                    Environment.Exit(0);
+                }
+
+            } 
+                
+         }        
+                   
+                
+                    
+            
+       
 
         private void Button3_Click(object sender, EventArgs e)
         {

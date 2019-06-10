@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace Radio
 {
@@ -82,7 +83,7 @@ namespace Radio
 
          if (h == 0 && m == 0 && s == 30)
            
-               MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
+             //  MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
 
             if (h == 0 && m == 0 && s == 0)
             {
@@ -129,24 +130,84 @@ namespace Radio
                 m = m - 1;
                 s = 59;
             }
+            if (m == - 1)
+            {
+                h = h - 1;
+                m = 59;
+            }
+           // if (h == 0 && m == 0 && s == 30)
+
+              //  MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s) + " секунд ");
+
+            if (h == 0 && m == 0 && s == 0)
+            {
+                timer2.Stop();
+                button1.Enabled = true;
+                //MessageBox.Show("2 timer");
+                // Application.Exit();
+                Environment.Exit(0);
+            }
+
+
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            h = Convert.ToInt32(textBox1.Text);
+            m = Convert.ToInt32(textBox2.Text);
+            s = Convert.ToInt32(textBox3.Text);
+
+
+            CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+            if (checkBox.Checked == true)
+            {
+                timer3.Start();
+                button1.Enabled = false;
+            }
+            else
+            {
+                timer3.Stop();
+                button1.Enabled = true;
+            }
+        }
+
+        private void Timer3_Tick(object sender, EventArgs e)
+        {
+            Per.hac = label4.Text;
+            Per.min = label5.Text;
+            Per.sec = label6.Text;
+
+            label4.Text = Convert.ToString(h);
+            label5.Text = Convert.ToString(m);
+            label6.Text = Convert.ToString(s);
+
+            s = s - 1;
+            if (s == -1)
+            {
+                m = m - 1;
+                s = 59;
+            }
             if (m == -1)
             {
                 h = h - 1;
                 m = 59;
             }
             if (h == 0 && m == 0 && s == 30)
-
-                MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s) + " секунд ");
+           MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s) + " секунд ");
 
             if (h == 0 && m == 0 && s == 0)
+
             {
-                timer2.Stop();
-                MessageBox.Show("2 timer");
-                // Application.Exit();
+                timer3.Stop();
+                button1.Enabled = true;
+                //MessageBox.Show("3 timer");
+                var psi = new ProcessStartInfo("shutdown", "/s /t 0");
+                psi.CreateNoWindow = true;
+                psi.UseShellExecute = false;
+                Process.Start(psi);
                 Environment.Exit(0);
+
             }
-
-
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -157,7 +218,7 @@ namespace Radio
             label6.Text = " 0 ";
             timer1.Stop();
             timer2.Stop();
-           
+            timer3.Stop();
         }
         
 
@@ -166,6 +227,7 @@ namespace Radio
             timer2.Stop();
             button1.Enabled = true;
             timer1.Stop();
+            timer3.Stop();
         }      
     }
 }

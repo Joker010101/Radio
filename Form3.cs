@@ -42,7 +42,7 @@ namespace Radio
            // Form1 fm1 = new Form1();
            // fm1.label1.Text = this.label6.Text;
 
-            Close();
+            //Close();
 
             string[] createtext = { textBox1.Text,textBox2.Text,textBox3.Text };
             File.WriteAllLines(@"timer1", createtext, System.Text.Encoding.Default);
@@ -84,7 +84,7 @@ namespace Radio
 
          if (h == 0 && m == 0 && s == 30)
            
-         //MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
+               MessageBox.Show("До выключения компьютера осталось " + Convert.ToString(s)+ " секунд ");
 
             if (h == 0 && m == 0 && s == 0)
             {
@@ -105,8 +105,14 @@ namespace Radio
             if (checkBox.Checked == true)
             {
                 timer2.Start();
+                button1.Enabled = false;
             }
-         }
+            else
+            {
+                timer2.Stop();
+                button1.Enabled = true;
+            }
+        }
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
@@ -151,16 +157,17 @@ namespace Radio
         private void Button3_Click(object sender, EventArgs e)
         {
 
-            label1.Text = " 0 ";
-            label2.Text = " 0 ";
-            label3.Text = " 0 ";
+            label4.Text = " 0 ";
+            label5.Text = " 0 ";
+            label6.Text = " 0 ";
             timer1.Stop();
+            timer2.Stop();
         }
         
 
         private void Button2_Click(object sender, EventArgs e)
         {
                timer1.Stop();
-        }       
+        }    
     }
 }
